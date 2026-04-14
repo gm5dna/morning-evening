@@ -5,6 +5,7 @@ import {
   DIM,
   RESET,
   contentWidth,
+  formatReference,
   parseDateKey,
   periodLabel,
   rule,
@@ -32,12 +33,12 @@ export function displayDevotional(devotional: Devotional): void {
 
   // Verse text — bold, in quotation marks
   const verseText = `\u201c${devotional.verse}\u201d`;
-  const verseLines = wrapText(verseText, width - 4);
+  const verseLines = wrapText(verseText, width - 2);
   for (const line of verseLines) {
     lines.push(`  ${BOLD}${line}${RESET}`);
   }
-  // Scripture reference — dimmed, right-aligned
-  lines.push(`  ${DIM}${devotional.scripture}${RESET}`);
+  // Scripture reference — right-aligned, dimmed italic with em-dash
+  lines.push(`  ${formatReference(devotional.scripture, width - 2)}`);
   lines.push("");
 
   // Prose text — wrapped, with paragraph breaks preserved
