@@ -1,0 +1,6 @@
+*.tgz
+*.js.map
+dist/tests/
+dist-scripts/
+scripts/
+docs/

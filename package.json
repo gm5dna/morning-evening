@@ -1,0 +1,31 @@
+{
+  "name": "morning-evening",
+  "version": "1.0.0",
+  "description": "Daily devotional readings from C.H. Spurgeon's Morning and Evening (1866)",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "bin": {
+    "morning-evening": "dist/src/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc && node dist/src/index.js",
+    "test": "tsc && node --test dist/tests/**/*.test.js",
+    "parse": "tsc -p tsconfig.scripts.json && node dist-scripts/scripts/parse-ccel.js"
+  },
+  "keywords": [
+    "spurgeon",
+    "morning-evening",
+    "devotional",
+    "bible",
+    "scripture"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  }
+}
