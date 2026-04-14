@@ -5,6 +5,7 @@ import { dirname, join } from "node:path";
 interface Devotional {
   date: string;
   period: "morning" | "evening";
+  verse: string;
   scripture: string;
   text: string;
 }
@@ -162,7 +163,13 @@ async function main(): Promise<void> {
       console.warn(`No scripture reference found for ${dateKey} ${period} (line ~${i})`);
     }
 
-    devotionals.push({ date: dateKey, period, scripture, text });
+    // Strip surrounding quotes from the scripture quote
+    const verse = scriptureQuote
+      .replace(/^[\u201c"]+/, "")
+      .replace(/[\u201d"]+$/, "")
+      .trim();
+
+    devotionals.push({ date: dateKey, period, verse, scripture, text });
   }
 
   // Sort by date then period (morning before evening)

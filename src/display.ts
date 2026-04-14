@@ -30,8 +30,14 @@ export function displayDevotional(devotional: Devotional): void {
   lines.push(rule(width));
   lines.push("");
 
-  // Scripture reference — bold, prominent
-  lines.push(`  ${BOLD}${devotional.scripture}${RESET}`);
+  // Verse text — bold, in quotation marks
+  const verseText = `\u201c${devotional.verse}\u201d`;
+  const verseLines = wrapText(verseText, width - 4);
+  for (const line of verseLines) {
+    lines.push(`  ${BOLD}${line}${RESET}`);
+  }
+  // Scripture reference — dimmed, right-aligned
+  lines.push(`  ${DIM}${devotional.scripture}${RESET}`);
   lines.push("");
 
   // Prose text — wrapped, with paragraph breaks preserved
